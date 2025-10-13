@@ -16,5 +16,9 @@ It said it had to do something with tls certificates, then to troubleshooting on
 They didn't work, once again I asked why it doesn't work. It's seemed that the url was either faulty or the certificates were no longer there, 
 after that in the end it worked with the certificates downloaded from Mozilla.
 
+> .bashrc SSL variable needs to be there,
+> .pem file needs to be there(` curl -o $PREFIX/etc/tls/cacert.pem https://curl.se/ca/cacert.pem `),
+> file needs to have permission 644 atleast
+> for some reason specified path didn't work in tls section
 
 other updates coming up...
