@@ -20,5 +20,7 @@ after that in the end it worked with the certificates downloaded from Mozilla.
 > .pem file needs to be there(` curl -o $PREFIX/etc/tls/cacert.pem https://curl.se/ca/cacert.pem `),
 > file needs to have permission 644 atleast
 > for some reason specified path didn't work in tls section
+>> it seems that file needs to be specified in tls settings while directory needs to be in environment variables
+>> bacues when I ran it without the exact file path in tls it showed a very small unnoticable error in console while variable one leads to tls excahnge failures.
 
 other updates coming up...

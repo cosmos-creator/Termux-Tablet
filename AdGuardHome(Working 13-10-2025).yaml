@@ -82,7 +82,7 @@ tls:
   allow_unencrypted_doh: false
   certificate_chain: ""
   private_key: ""
-  certificate_path: /data/data/com.termux/files/usr/etc/tls/
+  certificate_path: /data/data/com.termux/files/usr/etc/tls/cacert.pem
   private_key_path: ""
   strict_sni_check: false
 querylog:
