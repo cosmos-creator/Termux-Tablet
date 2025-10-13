@@ -1,3 +1,5 @@
 [user]
 	email = ezy.misc@gmail.com
 	name = Ez
+[http]
+	sslCAInfo = /data/data/com.termux/files/usr/etc/tls/cacert.pem
