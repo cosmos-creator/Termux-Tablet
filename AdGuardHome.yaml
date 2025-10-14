@@ -9,7 +9,7 @@ auth_attempts: 5
 block_auth_min: 15
 http_proxy: ""
 language: ""
-theme: auto
+theme: dark
 dns:
   bind_hosts:
     - 0.0.0.0
@@ -21,16 +21,17 @@ dns:
   ratelimit_whitelist: []
   refuse_any: true
   upstream_dns:
-    - https://dns.cloudflare.com/dns-query
-    - https://dns.google/dns-query
+    - tls://one.one.one.one:853
+    - tls://dns.google:853
+    - tls://dns.quad9.net:853
   upstream_dns_file: ""
   bootstrap_dns:
     - 1.1.1.1
     - 8.8.8.8
-    - 9.9.9.10
-    - 149.112.112.10
-    - 2620:fe::10
-    - 2620:fe::fe:10
+    - 9.9.9.9
+    - 149.112.112.112
+    - 2620:fe::fe
+    - 2620:fe::9
   fallback_dns: []
   upstream_mode: load_balance
   fastest_timeout: 1s
@@ -50,7 +51,7 @@ dns:
   cache_optimistic: false
   bogus_nxdomain: []
   aaaa_disabled: false
-  enable_dnssec: false
+  enable_dnssec: true
   edns_client_subnet:
     custom_ip: ""
     enabled: false
@@ -74,7 +75,7 @@ dns:
     enabled: true
 tls:
   enabled: false
-  server_name: adguard.home.local
+  server_name: adguard.local.home
   force_https: true
   port_https: 8443
   port_dns_over_tls: 8853
@@ -84,7 +85,7 @@ tls:
   allow_unencrypted_doh: false
   certificate_chain: ""
   private_key: ""
-  certificate_path: ./cacert.pem
+  certificate_path: /data/data/com.termux/files/usr/etc/tls/cert.pem
   private_key_path: ""
   strict_sni_check: false
 querylog:
@@ -109,13 +110,27 @@ filters:
     name: AdAway Default Blocklist
     id: 2
   - enabled: true
-    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_48.txt
-    name: HaGeZi's Pro Blocklist
-    id: 1760296563
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_49.txt
+    name: HaGeZi's Ultimate Blocklist
+    id: 1760456500
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_56.txt
+    name: HaGeZi's The World's Most Abused TLDs
+    id: 1760456501
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_61.txt
+    name: HaGeZi's Samsung Tracker Blocklist
+    id: 1760456502
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_27.txt
+    name: OISD Blocklist Big
+    id: 1760456503
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_63.txt
+    name: HaGeZi's Windows/Office Tracker Blocklist
+    id: 1760456504
 whitelist_filters: []
-user_rules:
-  - '||www.googleadservices.com^$important'
-  - ""
+user_rules: []
 dhcp:
   enabled: false
   interface_name: ""
@@ -150,7 +165,7 @@ filtering:
     pixabay: true
     yandex: true
     youtube: true
-  blocking_mode: null_ip
+  blocking_mode: default
   parental_block_host: family-block.dns.adguard.com
   safebrowsing_block_host: standard-block.dns.adguard.com
   rewrites: []
@@ -162,7 +177,7 @@ filtering:
   filters_update_interval: 24
   blocked_response_ttl: 10
   filtering_enabled: true
-  parental_enabled: true
+  parental_enabled: false
   safebrowsing_enabled: false
   protection_enabled: true
 clients:
