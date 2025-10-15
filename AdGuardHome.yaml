@@ -21,9 +21,9 @@ dns:
   ratelimit_whitelist: []
   refuse_any: true
   upstream_dns:
-    - tls://one.one.one.one:853
-    - tls://dns.google:853
-    - tls://dns.quad9.net:853
+    - tls://one.one.one.one
+    - tls://dns.google
+    - tls://dns.quad9.net
   upstream_dns_file: ""
   bootstrap_dns:
     - 1.1.1.1
@@ -33,7 +33,7 @@ dns:
     - 2620:fe::fe
     - 2620:fe::9
   fallback_dns: []
-  upstream_mode: load_balance
+  upstream_mode: parallel
   fastest_timeout: 1s
   allowed_clients: []
   disallowed_clients: []
