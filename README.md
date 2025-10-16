@@ -29,9 +29,9 @@ some pointers:
   - bacause when I ran it without the exact file path in tls it showed a very small unnoticable error in console while variable one leads to tls exchange failures.
 
 used 
-```bash echo | openssl s_client -servername adguardteam.github.io -connect adguardteam.github.io:443 2>/dev/null | openssl x509 -outform PEM > agh.crt```
+```shell echo | openssl s_client -servername adguardteam.github.io -connect adguardteam.github.io:443 2>/dev/null | openssl x509 -outform PEM > agh.crt```
 to download adguard certs.
-```bash add-trusted-certificate agh.crt```
+```shell add-trusted-certificate agh.crt```
 to add this into trusted certs
 
 certificates goes in `$PREFIX/etc/...`
