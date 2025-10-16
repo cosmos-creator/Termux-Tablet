@@ -41,12 +41,12 @@ they need an extensionless shell script name run to create the custom service, i
 
 
 tree structure looks like it:
-
+```
 home ---+--- file1
 	|--- file2
 	|--- dir1
-	+--- dir3
-
+```	+--- dir3
+```
 usr  ---+--- bin
 	|--- etc
 	|--- include
@@ -55,6 +55,7 @@ usr  ---+--- bin
 	|--- share
 	|--- tmp
 	+--- var
+```
 other updates coming up...
 user binaries in bin
 etc contains the certificate paths, and other system related files
