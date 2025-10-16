@@ -3,6 +3,8 @@
 > AdGUard service script 
 > A script to run fastfetch on startup screen from random logos I liked.
 
+Requirements: Termux, Termux:API, Termux:Styling, storage permissions, for now.
+
 ### These are from my tablet, made with the purpose to not become a hurdle when doing a reset in future.
 Since I did not root the tablet, I had to find a work around to run AdGuard with only the permissions of an unprevillaged user.
 Thus I did some sniffing around and come to know that I could run it with the configuratoin file with some changes to it, such as
@@ -31,4 +33,29 @@ to download adguard certs.
 ` add-trusted-certificate agh.crt ` 
 to add this into trusted certs
 
+certificates goes in `$PREFIX/etc/...`
+
+`sv services` need a folder named after what we'd use to call them, like adguard, folder name is the same as the name we'd use to run the sv command on.
+they are stored in: `$PREFIX/var/services`
+they need an extensionless shell script name run to create the custom service, i.e `services/service-name/run`
+
+
+tree structure looks like it:
+
+home ---+--- file1
+	|--- file2
+	|--- dir1
+	+--- dir3
+
+usr  ---+--- bin
+	|--- etc
+	|--- include
+	|--- lib
+	|--- libexec
+	|--- share
+	|--- tmp
+	+--- var
 other updates coming up...
+user binaries in bin
+etc contains the certificate paths, and other system related files
+changed font style, to whatever

@@ -109,3 +109,4 @@ config/credentials.json
 *.swo
 *.tmp
 *.orig
+.lesshst
