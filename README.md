@@ -45,7 +45,8 @@ tree structure looks like it:
 home ---+--- file1
 	|--- file2
 	|--- dir1
-```	+--- dir3
+	+--- dir3
+```
 ```
 usr  ---+--- bin
 	|--- etc
