@@ -1,7 +1,7 @@
 ### Consists of mostly the configs and shell scripts for miscellaneous tasks
 ## Such as:
-> AdGuard service script  
-> A script to run fastfetch on startup screen with logos I liked
+- AdGuard service script
+- A script to run fastfetch on startup screen with logos I liked
 
 Requirements: Termux, Termux:API, Termux:Styling, storage permissions, for now.
 
@@ -13,7 +13,7 @@ Thus with the help of ChatGpt I made a config file that could be used to change 
 another problem encountered was the web ui, it again tried to bind to a port I could not use, so changed it to 8443.
 
 Then I ran it using the command 
-` ./AdGuardHome -c AdGuardHome.yaml ` 
+```shell ./AdGuardHome -c AdGuardHome.yaml ```
 I was happy that it worked, but not for long, 
 after sometime I encountered errors I didn't understand at all, that's when ChatGpt helped again, I rigorouly typed out the erorr codes I recieved into it.  
 It said it had to do something with tls certificates, then to troubleshooting once again, downloaded some certificates files from somewhere I don't remember.  
@@ -22,16 +22,23 @@ after that in the end it worked with the certificates downloaded from Mozilla.
 
 some pointers:
 - .bashrc SSL variable needs to be there,
-- .pem file needs to be there(` curl -o $PREFIX/etc/tls/cacert.pem https://curl.se/ca/cacert.pem `),
+- .pem file needs to be there:
+```shell
+curl -o $PREFIX/etc/tls/cacert.pem https://curl.se/ca/cacert.pem
+```
 - file needs to have permission 644 atleast
 - for some reason specified path didn't work in tls section
   - it seems that file needs to be specified in tls settings while directory needs to be in environment variables
   - bacause when I ran it without the exact file path in tls it showed a very small unnoticable error in console while variable one leads to tls exchange failures.
 
 used 
-```shell echo | openssl s_client -servername adguardteam.github.io -connect adguardteam.github.io:443 2>/dev/null | openssl x509 -outform PEM > agh.crt```
+```shell
+ echo | openssl s_client -servername adguardteam.github.io -connect adguardteam.github.io:443 2>/dev/null | openssl x509 -outform PEM > agh.crt
+```
 to download adguard certs.
-```shell add-trusted-certificate agh.crt```
+```shell 
+add-trusted-certificate agh.crt
+```
 to add this into trusted certs
 
 certificates goes in `$PREFIX/etc/...`
