@@ -1,7 +1,7 @@
 ### Consists of mostly the configs and shell scripts for miscellaneous tasks
 ## Such as:
-> AdGUard service script 
-> A script to run fastfetch on startup screen from random logos I liked.
+> AdGuard service script  
+> A script to run fastfetch on startup screen with logos I liked
 
 Requirements: Termux, Termux:API, Termux:Styling, storage permissions, for now.
 
@@ -15,22 +15,23 @@ another problem encountered was the web ui, it again tried to bind to a port I c
 Then I ran it using the command 
 ` ./AdGuardHome -c AdGuardHome.yaml ` 
 I was happy that it worked, but not for long, 
-after sometime I encountered errors I didn't understand at all, that's when ChatGpt helped again, I rigorouly typed out the erorr codes I recieved into it.
-It said it had to do something with tls certificates, then to troubleshooting once again, downloaded some certificates files from somewhere I don't remember.
+after sometime I encountered errors I didn't understand at all, that's when ChatGpt helped again, I rigorouly typed out the erorr codes I recieved into it.  
+It said it had to do something with tls certificates, then to troubleshooting once again, downloaded some certificates files from somewhere I don't remember.  
 They didn't work, once again I asked why it doesn't work. It's seemed that the url was either faulty or the certificates were no longer there, 
 after that in the end it worked with the certificates downloaded from Mozilla.
 
+some pointers:
 - .bashrc SSL variable needs to be there,
 - .pem file needs to be there(` curl -o $PREFIX/etc/tls/cacert.pem https://curl.se/ca/cacert.pem `),
 - file needs to have permission 644 atleast
 - for some reason specified path didn't work in tls section
--- it seems that file needs to be specified in tls settings while directory needs to be in environment variables
--- bacause when I ran it without the exact file path in tls it showed a very small unnoticable error in console while variable one leads to tls exchange failures.
+  - it seems that file needs to be specified in tls settings while directory needs to be in environment variables
+  - bacause when I ran it without the exact file path in tls it showed a very small unnoticable error in console while variable one leads to tls exchange failures.
 
 used 
-`echo | openssl s_client -servername adguardteam.github.io -connect adguardteam.github.io:443 2>/dev/null | openssl x509 -outform PEM > agh.crt`
+```bash echo | openssl s_client -servername adguardteam.github.io -connect adguardteam.github.io:443 2>/dev/null | openssl x509 -outform PEM > agh.crt```
 to download adguard certs.
-` add-trusted-certificate agh.crt ` 
+```bash add-trusted-certificate agh.crt```
 to add this into trusted certs
 
 certificates goes in `$PREFIX/etc/...`
