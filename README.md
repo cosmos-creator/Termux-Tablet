@@ -48,16 +48,13 @@ home ---+--- file1
 	+--- dir3
 ```
 ```
-usr  ---+--- bin
-	|--- etc
-	|--- include
-	|--- lib
-	|--- libexec
-	|--- share
-	|--- tmp
-	+--- var
+usr  ---+--- bin(user binaries, aka apps)
+	|--- etc(certificate and system related directories)
+	|--- include(header files, etc.)
+	|--- lib(some weird files)
+	|--- libexec(scripts and thingies)
+	|--- share(some app related directories)
+	|--- tmp(empty)
+	+--- var(services are stored here)
 ```
 other updates coming up...
-user binaries in bin
-etc contains the certificate paths, and other system related files
-changed font style, to whatever
