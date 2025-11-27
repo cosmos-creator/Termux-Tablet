@@ -1,6 +1,6 @@
 ### Consists of mostly the configs and shell scripts for miscellaneous tasks
 ## Such as:
-- AdGuard service script
+- ~~AdGuard service script~~
 - A script to run fastfetch on startup screen with logos I liked
 
 Requirements: Termux, Termux:API, Termux:Styling, storage permissions, for now.
