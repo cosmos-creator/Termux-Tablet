@@ -6,63 +6,10 @@
 Requirements: Termux, Termux:API, Termux:Styling, storage permissions, for now.
 
 ### These are from my tablet, made with the purpose to not become a hurdle when doing a reset in future.
-Since I did not root the tablet, I had to find a work around to run AdGuard with only the permissions of an unprevillaged user.
-Thus I did some sniffing around and come to know that I could run it with the configuratoin file with some changes to it, such as
-changing the default port of the dns server, by default it'd try to use port 53 which is not possible on a unrooted android device.
-Thus with the help of ChatGpt I made a config file that could be used to change the default ports, 
-another problem encountered was the web ui, it again tried to bind to a port I could not use, so changed it to 8443.
-
-Then I ran it using the command 
-```shell ./AdGuardHome -c AdGuardHome.yaml ```
-I was happy that it worked, but not for long, 
-after sometime I encountered errors I didn't understand at all, that's when ChatGpt helped again, I rigorouly typed out the erorr codes I recieved into it.  
-It said it had to do something with tls certificates, then to troubleshooting once again, downloaded some certificates files from somewhere I don't remember.  
-They didn't work, once again I asked why it doesn't work. It's seemed that the url was either faulty or the certificates were no longer there, 
-after that in the end it worked with the certificates downloaded from Mozilla.
-
-some pointers:
-- .bashrc SSL variable needs to be there,
-- .pem file needs to be there:
-```shell
-curl -o $PREFIX/etc/tls/cacert.pem https://curl.se/ca/cacert.pem
-```
-- file needs to have permission 644 atleast
-- for some reason specified path didn't work in tls section
-  - it seems that file needs to be specified in tls settings while directory needs to be in environment variables
-  - bacause when I ran it without the exact file path in tls it showed a very small unnoticable error in console while variable one leads to tls exchange failures.
-
-used 
-```shell
- echo | openssl s_client -servername adguardteam.github.io -connect adguardteam.github.io:443 2>/dev/null | openssl x509 -outform PEM > agh.crt
-```
-to download adguard certs.
-```shell 
-add-trusted-certificate agh.crt
-```
-to add this into trusted certs
-
-certificates goes in `$PREFIX/etc/...`
-
+~~A million years later...~~
 `sv services` need a folder named after what we'd use to call them, like adguard, folder name is the same as the name we'd use to run the sv command on.
 they are stored in: `$PREFIX/var/services`
 they need an extensionless shell script name run to create the custom service, i.e `services/service-name/run`
-
-
-tree structure looks like it:
-```
-home ---+--- file1
-	|--- file2
-	|--- dir1
-	+--- dir3
-```
-```
-usr  ---+--- bin(user binaries, aka apps)
-	|--- etc(certificate and system related directories)
-	|--- include(header files, etc.)
-	|--- lib(some weird files)
-	|--- libexec(scripts and thingies)
-	|--- share(some app related directories)
-	|--- tmp(empty)
-	+--- var(services are stored here)
-```
 other updates coming up...
+P.S: I get to root it in the end, it was very figuring out how to root it, especially since everywhere I went they missed out one important thing for beginners, that was how to actually get it to show up in fastboot devices.
+So much for noobs learning curve, and I got it almost bricked in the end as well lol.
