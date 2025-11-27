@@ -11,5 +11,6 @@ Requirements: Termux, Termux:API, Termux:Styling, storage permissions, for now.
 they are stored in: `$PREFIX/var/services`
 they need an extensionless shell script name run to create the custom service, i.e `services/service-name/run`
 other updates coming up...
+<br>
 P.S: I get to root it in the end, it was very figuring out how to root it, especially since everywhere I went they missed out one important thing for beginners, that was how to actually get it to show up in fastboot devices.
 So much for noobs learning curve, and I got it almost bricked in the end as well lol.
